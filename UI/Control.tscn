@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Control.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Circle SoftBody" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -172.0
+margin_top = 150.0
+margin_right = 172.0
+margin_bottom = 204.0
+text = "Circle SoftBody"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Square SoftBody" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -172.0
+margin_top = 300.0
+margin_right = 172.0
+margin_bottom = 354.0
+text = "Square SoftBody"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -170.318
+margin_top = 224.319
+margin_right = 173.682
+margin_bottom = 278.319
+text = "Color"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -283.5
+margin_top = -14.0
+margin_right = 283.5
+text = "Background: https://www.freepik.com/vectors/background || By Freepik - www.freepik.com"
+
+[connection signal="pressed" from="Circle SoftBody" to="." method="_on_Circle_SoftBody_pressed"]
+[connection signal="pressed" from="Square SoftBody" to="." method="_on_Square_SoftBody_pressed"]
+[connection signal="pressed" from="Color" to="." method="_on_Color_pressed"]

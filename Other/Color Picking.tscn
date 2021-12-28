@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Other/Color Picking.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.145098, 0.145098, 0.145098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 125.966
+margin_top = 73.9663
+margin_right = 308.966
+margin_bottom = 87.9663
+rect_scale = Vector2( 1.39346, 1.50214 )
+text = "Choose the Color of Polygon."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon Color" type="ColorPicker" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = -490.0
+margin_right = 408.0
+margin_bottom = -27.9998
+edit_alpha = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 600.0
+margin_top = 73.966
+margin_right = 783.0
+margin_bottom = 87.966
+rect_scale = Vector2( 1.39346, 1.50214 )
+text = "Choose the Color of Line."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line Color" type="ColorPicker" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 600.0
+margin_top = -490.0
+margin_right = 908.0
+margin_bottom = -27.9998
+edit_alpha = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_bottom = 100.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Exit Button" to="." method="_on_Exit_Button_pressed"]

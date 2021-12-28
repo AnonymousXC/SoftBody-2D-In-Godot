@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Circle Soft Body/Scenes/Soft Body 2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Other Resources Circle/Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Other Resources Square/Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://290121-P7DMAR-427.jpg" type="Texture" id=4]
+[ext_resource path="res://Other Resources Circle/Control.gd" type="Script" id=5]
+
+[node name="Main" type="Node2D"]
+
+[node name="290121-P7DMAR-427" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.290196, 0.290196, 1 )
+position = Vector2( 508.801, 332.407 )
+scale = Vector2( 0.55, 0.35 )
+texture = ExtResource( 4 )
+
+[node name="Soft Body 2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 456.07, 219.521 )
+rotation = 3.06741
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 483.661, 484.083 )
+
+[node name="Box" parent="." instance=ExtResource( 3 )]
+position = Vector2( -2.82861, -70.7107 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1025.0
+margin_bottom = 606.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_bottom = 100.0
+action_mode = 0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -138.121
+margin_top = -23.4731
+margin_right = 133.879
+margin_bottom = -9.47314
+text = "Background Image : \"Designed by Freepik\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control/Exit" to="Control" method="_on_Exit_pressed"]

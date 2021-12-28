@@ -1,0 +1,248 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Circle Soft Body/Scripts/Soft Body 2D.gd" type="Script" id=1]
+[ext_resource path="res://Circle Soft Body/Scripts/Spline.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.8076
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 16.0
+
+[sub_resource type="Curve2D" id=10]
+bake_interval = 10.0
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="Soft Body 2D" type="RigidBody2D"]
+script = ExtResource( 1 )
+
+[node name="Mid Ball" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mid Ball"]
+shape = SubResource( 1 )
+
+[node name="Top-Bottom" type="PinJoint2D" parent="Mid Ball"]
+node_a = NodePath("../../Top Ball")
+node_b = NodePath("../../Bottom Ball")
+softness = 16.0
+
+[node name="TR-BL" type="PinJoint2D" parent="Mid Ball"]
+node_a = NodePath("../../Top Right Ball")
+node_b = NodePath("../../Bottom Left Ball")
+softness = 16.0
+
+[node name="Right-Left" type="PinJoint2D" parent="Mid Ball"]
+node_a = NodePath("../../Right Ball")
+node_b = NodePath("../../Left Ball")
+softness = 16.0
+
+[node name="BR-TL" type="PinJoint2D" parent="Mid Ball"]
+node_a = NodePath("../../Bottom Right Ball")
+node_b = NodePath("../../Top Left Ball")
+softness = 16.0
+
+[node name="Top Ball" type="RigidBody2D" parent="."]
+position = Vector2( 0, -100 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Ball"]
+shape = SubResource( 2 )
+
+[node name="Top-Mid" type="DampedSpringJoint2D" parent="Top Ball"]
+node_a = NodePath("../../Mid Ball")
+node_b = NodePath("..")
+stiffness = 30.0
+
+[node name="Top-TR" type="PinJoint2D" parent="Top Ball"]
+position = Vector2( 40, 10 )
+node_a = NodePath("..")
+node_b = NodePath("../../Top Right Ball")
+softness = 13.0
+
+[node name="Top-TL" type="PinJoint2D" parent="Top Ball"]
+position = Vector2( -40, 10 )
+node_a = NodePath("..")
+node_b = NodePath("../../Top Left Ball")
+softness = 13.0
+
+[node name="Line2D" type="Line2D" parent="Top Ball"]
+position = Vector2( 0.0992126, 2.08347 )
+points = PoolVector2Array( -3.56631, 0.135376, 3.30066, 0.0724564 )
+width = 25.0
+default_color = Color( 1, 0, 0, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Bottom Ball" type="RigidBody2D" parent="."]
+position = Vector2( 0, 100 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Ball"]
+shape = SubResource( 3 )
+
+[node name="Bottom-Mid" type="DampedSpringJoint2D" parent="Bottom Ball"]
+position = Vector2( 0, -50 )
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+stiffness = 30.0
+
+[node name="Bottom-BR" type="PinJoint2D" parent="Bottom Ball"]
+position = Vector2( 40, -10 )
+node_a = NodePath("..")
+node_b = NodePath("../../Bottom Right Ball")
+softness = 13.0
+
+[node name="Bottom-BL" type="PinJoint2D" parent="Bottom Ball"]
+position = Vector2( -40, -10 )
+node_a = NodePath("..")
+node_b = NodePath("../../Bottom Left Ball")
+softness = 13.0
+
+[node name="Right Ball" type="RigidBody2D" parent="."]
+position = Vector2( 100, 0 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Ball"]
+shape = SubResource( 4 )
+
+[node name="Right-Mid" type="DampedSpringJoint2D" parent="Right Ball"]
+rotation = 1.5708
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+stiffness = 30.0
+
+[node name="Right-Top" type="PinJoint2D" parent="Right Ball"]
+position = Vector2( -10, -40 )
+node_a = NodePath("..")
+node_b = NodePath("../../Top Right Ball")
+softness = 13.0
+
+[node name="Right-Bottom" type="PinJoint2D" parent="Right Ball"]
+position = Vector2( -10, 40 )
+node_a = NodePath("..")
+node_b = NodePath("../../Bottom Right Ball")
+softness = 13.0
+
+[node name="Left Ball" type="RigidBody2D" parent="."]
+position = Vector2( -100, 0 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Ball"]
+shape = SubResource( 5 )
+
+[node name="Left-Mid" type="DampedSpringJoint2D" parent="Left Ball"]
+rotation = -1.5708
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+stiffness = 30.0
+
+[node name="Left-Top" type="PinJoint2D" parent="Left Ball"]
+position = Vector2( 10, -40 )
+node_a = NodePath("..")
+node_b = NodePath("../../Top Left Ball")
+softness = 13.0
+
+[node name="Left-Bottom" type="PinJoint2D" parent="Left Ball"]
+position = Vector2( 10, 40 )
+node_a = NodePath("..")
+node_b = NodePath("../../Bottom Left Ball")
+softness = 13.0
+
+[node name="Top Right Ball" type="RigidBody2D" parent="."]
+position = Vector2( 75, -75 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Right Ball"]
+shape = SubResource( 6 )
+
+[node name="TopR-Mid" type="PinJoint2D" parent="Top Right Ball"]
+position = Vector2( -37.5, 37.5 )
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+softness = 13.0
+
+[node name="Bottom Right Ball" type="RigidBody2D" parent="."]
+position = Vector2( 75, 75 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Right Ball"]
+shape = SubResource( 7 )
+
+[node name="BR-Mid" type="PinJoint2D" parent="Bottom Right Ball"]
+position = Vector2( -37.5, -37.5 )
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+softness = 13.0
+
+[node name="Top Left Ball" type="RigidBody2D" parent="."]
+position = Vector2( -75, -75 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Left Ball"]
+shape = SubResource( 8 )
+
+[node name="TL-Mid" type="PinJoint2D" parent="Top Left Ball"]
+position = Vector2( 37.5, 37.5 )
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+softness = 13.0
+
+[node name="Bottom Left Ball" type="RigidBody2D" parent="."]
+position = Vector2( -75, 75 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Left Ball"]
+shape = SubResource( 9 )
+
+[node name="BL-Mid" type="PinJoint2D" parent="Bottom Left Ball"]
+position = Vector2( 37.5, -37.5 )
+node_a = NodePath("..")
+node_b = NodePath("../../Mid Ball")
+softness = 13.0
+
+[node name="SmoothPath" type="Path2D" parent="."]
+self_modulate = Color( 1, 1, 1, 1 )
+curve = SubResource( 10 )
+script = ExtResource( 2 )
+spline_length = 30
+_smooth = true
+_straighten = true
+
+[node name="Polygon2D" type="Polygon2D" parent="SmoothPath"]
+color = Color( 0.898039, 1, 0, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
